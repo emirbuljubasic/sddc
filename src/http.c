@@ -31,13 +31,13 @@ void send_http_request(const char *host, const char *resource, const char *auth,
   char request[1000];
   sprintf(request, "GET %s HTTP/1.1\r\nHost: %s\r\n", resource, host);
 
-  if (strcmp(auth, "")) {
+  if (strcmp(auth, "") != 0) {
     strcat(request, "Authorization: Basic ");
     strcat(request, auth);
     strcat(request, "\r\n");
   }
 
-  if (strcmp(user_agent, "")) {
+  if (strcmp(user_agent, "") != 0) {
     strcat(request, "User-Agent: ");
     strcat(request, user_agent);
     strcat(request, "\r\n");

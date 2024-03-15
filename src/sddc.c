@@ -25,14 +25,22 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  int cnt = 0;
+  char ip_addr_old[15];
+  char ip_addr[15];
+
   do {
-
-    char ip_addr[15];
     get_ip(ip_addr);
-
     printf("ip address: %s\n", ip_addr);
 
-    update_ddns(ip_addr);
+    if (strcmp(ip_addr, ip_addr_old) != 0) {
+      update_ddns(ip_addr);
+    } else {
+      printf("ip unchanged: skipping http request...\n");
+    }
+
+    strcpy(ip_addr_old, ip_addr);
+
     sleep(delay);
 
   } while (continuous);
