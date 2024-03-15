@@ -1,10 +1,16 @@
 CC=gcc
+CFLAGS=-lb64 -Iinc -O2
 
-sddc: sddc.o
-	gcc sddc.o -o sddc -lb64
+SRCS = src/*
 
-sddc.o: sddc.c
-	gcc -c sddc.c
+install: all
+	cp sddc /usr/local/bin/sddc
+	cp openrc/sddc /etc/init.d/sddc
+	rc-update add sddc default
+	rc-service sddc start
+
+all: ${SRCS}
+	${CC} ${SRCS} -o sddc ${CFLAGS} 
 
 clean:
-	rm -rf sddc *.o
+	rm -rf sddc

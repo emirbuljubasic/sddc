@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+command="/usr/local/bin/sddc"
+command_args=""
+command_background="yes"
+
+pidfile="/var/run/sddc.pid"
