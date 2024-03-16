@@ -12,9 +12,9 @@ sddc uses the [**libb64**](https://github.com/libb64/libb64) base64 library for 
 
 ## configuration
 sddc expects a *credentials.h* file in the **inc** directory which contains the following macros:
-- __USERNAME_
-- __PASSWORD_
-- __HOSTNAME_
+- \_\_USERNAME\_
+- \_\_PASSWORD\_
+- \_\_HOSTNAME\_
 
 since sddc works by sending a simple http request to the noip service, the program can be adapted to any other ddns service by changing said HTTP request.
 
