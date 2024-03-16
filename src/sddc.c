@@ -33,13 +33,11 @@ int main(int argc, char *argv[]) {
     get_ip(ip_addr);
     printf("ip address: %s\n", ip_addr);
 
-    if (strcmp(ip_addr, ip_addr_old) != 0) {
-      update_ddns(ip_addr);
+    if (strcmp(ip_addr, ip_addr_old) != 0 && update_ddns(ip_addr)) {
+      strcpy(ip_addr_old, ip_addr);
     } else {
       printf("ip unchanged: skipping http request...\n");
     }
-
-    strcpy(ip_addr_old, ip_addr);
 
     sleep(delay);
 

@@ -11,6 +11,8 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+typedef enum { false, true } bool;
+
 #define __MAX_RESPONSE_SIZE_ 4096
 #define __PORT_ 80
 
@@ -29,6 +31,7 @@ void send_http_request(const char *host, const char *resource, const char *auth,
                        char *response);
 char *extract_ip(char *ptr);
 void get_ip(char *ip_addr);
-void update_ddns(const char *ip_addr);
+bool update_ddns(const char *ip_addr);
+bool process_response(char *response);
 
 #endif // __HTTP_H

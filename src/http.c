@@ -87,7 +87,7 @@ void get_ip(char *ip_addr) {
   strcpy(ip_addr, extract_ip(response));
 }
 
-void update_ddns(const char *ip_addr) {
+bool update_ddns(const char *ip_addr) {
   char response[__MAX_RESPONSE_SIZE_];
   uint8_t resource_length = strlen(__DDNS_URI_) + strlen(ip_addr);
   char resource[resource_length];
@@ -106,5 +106,25 @@ void update_ddns(const char *ip_addr) {
   send_http_request(__DDNS_URL_, resource, encoded_auth, __USER_AGENT_, __PORT_,
                     response);
 
-  printf("response: %s\n", response);
+  // printf("response: %s\n", response);
+
+  return process_response(response) ? true : update_ddns(ip_addr);
+}
+
+bool process_response(char *response) {
+  response += 9; // skip HTTP version
+  char code[4];
+
+  for (uint8_t i = 0; i < 3; ++i) {
+    code[i] = response[i];
+  }
+
+  code[3] = '\0';
+
+  printf("code -> %s\n", code);
+
+  if (strcmp(code, "200") == 0)
+    return true;
+
+  return false;
 }
