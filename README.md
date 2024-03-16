@@ -8,8 +8,7 @@ sddc is a ddns client for the noip ddns service written in C.
 - [installation](#installation)
 
 ## requirements
-sddc uses the **libb64** base64 library for encoding the *username:password* string before sending the HTTP request.
-https://github.com/libb64/libb64
+sddc uses the [**libb64**](https://github.com/libb64/libb64) base64 library for encoding the *username:password* string before sending the HTTP request.
 
 ## configuration
 sddc expects a *credentials.h* file in the **inc** directory which contains the following macros:
