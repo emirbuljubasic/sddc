@@ -1,0 +1,12 @@
+[Unit]
+Description=simple dynamic dns client
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/sddc
+Restart=on-failure
+PIDFile=/var/run/sddc.pid
+
+[Install]
+WantedBy=multi-user.target
