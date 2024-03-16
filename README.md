@@ -21,10 +21,10 @@ since sddc works by sending a simple http request to the noip service, the progr
 ## installation
 to install sddc run 
 ```bash
-sudo make install
+$ sudo make install
 ```
 additionally to add sddc as a service run either of the following commands based on your init system
 ```bash
-sudo make openrc
-sudo make systemd
+$ sudo make openrc
+$ sudo make systemd
 ```
