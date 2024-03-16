@@ -1,6 +1,6 @@
 # Simple Dynamic DNS Client
 
-sddc is a ddns client for the noip ddns service written in C.
+sddc is a ddns client for the noip ddns service.
 
 ## table of contents
 - [requirements](#requirements)
